@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../ui/widgets/card_list.dart';
+import 'package:qr_scanner_generator/ui/widgets/card_list.dart';
 //import '../ui/card_type.dart';
 
 class App extends StatelessWidget{

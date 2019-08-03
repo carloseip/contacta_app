@@ -1,39 +1,39 @@
 {
     "cardResults": [{
-            "cardHolderName": "EMEL CELEDONIO",
-            "cardNumber": "5421143557869999",
+            "cardHolderName": "Emel Celedonio",
+            "cardNumber": "987521463",
             "cardMonth": "11",
             "cardYear": "2025",
             "cardCvv": "127",
             "cardColor": null,
-            "cardType": "Tarjeta de Crédito"
+            "cardType": "Developer vendor"
         },
         {
-            "cardHolderName": "KELLY PARIONA",
-            "cardNumber": "5421143557869999",
+            "cardHolderName": "Franz Gomez",
+            "cardNumber": "962158475",
             "cardMonth": "12",
             "cardYear": "2024",
             "cardCvv": "227",
             "cardColor": null,
-            "cardType": "Tarjeta de Débito"
+            "cardType": "Gammer profesional"
         },
         {
-            "cardHolderName": "NOMBRE EJEMPLO",
-            "cardNumber": "5421143557869999",
+            "cardHolderName": "Edmundo Prado",
+            "cardNumber": "913324453",
             "cardMonth": "01",
             "cardYear": "2023",
             "cardCvv": "327",
             "cardColor": null,
-            "cardType": "Tarjeta de Crédito"
+            "cardType": "Desarrollador Junior"
         },
         {
-            "cardHolderName": "DUEÑO DE TARJETA",
-            "cardNumber": "5421143557869999",
+            "cardHolderName": "Carlos Inga",
+            "cardNumber": "925105425",
             "cardMonth": "02",
             "cardYear": "2022",
             "cardCvv": "427",
             "cardColor": null,
-            "cardType": "Tarjeta de Débito"
+            "cardType": "Programador Junior"
         }
     ]
 }
