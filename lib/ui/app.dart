@@ -5,37 +5,37 @@ import 'package:qr_scanner_generator/ui/widgets/card_list.dart';
 class App extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
-    /*
+    
     return Scaffold(
       appBar: AppBar(
         elevation: 0.0,
-        backgroundColor: Colors.redAccent,
+        backgroundColor: Colors.white,
         centerTitle: true,
         title: Text(
-            'Tus Tarjetas',
+            'Contacta',
             style: TextStyle(
                 fontSize: 16.0,
                 color: Colors.black,
                 fontWeight: FontWeight.w600),
         ),
-        leading: IconButton(
-          icon: Icon(Icons.menu,
-          color: Colors.black),
-          onPressed: (){},
-        ),
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.add,
-            color: Colors.black),
-            onPressed: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => CardType()));
-            },
-          )
-        ]
+        // leading: IconButton(
+        //   icon: Icon(Icons.menu,
+        //   color: Colors.black),
+        //   onPressed: (){},
+        // ),
+        // actions: <Widget>[
+        //   // IconButton(
+        //   //   icon: Icon(Icons.add,
+        //   //   color: Colors.black),
+        //   //   onPressed: (){
+        //   //     Navigator.push(context, MaterialPageRoute(builder: (context) => CardType()));
+        //   //   },
+        //   // )
+        // ]
       ),
       body: CardList(),
-    );*/
-    return  CardList();
+    );
+    //return  CardList();
   }
   
 }

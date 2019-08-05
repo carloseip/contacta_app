@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Págalo Toditito',
+      title: 'Contacta',
       theme: new ThemeData(
         // Add the 3 lines from here...
         primaryColor: Colors.white,

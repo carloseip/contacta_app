@@ -1,5 +1,20 @@
 import 'package:flutter/material.dart';
 
+class TarjetaModel{
+  List<TarjetaPresentacion> results;
+
+  TarjetaModel({this.results});
+
+  TarjetaModel.fromJson(Map<String, dynamic> json) {
+    if (json['value'] != null) {
+      results = new List<TarjetaPresentacion>();
+      json['value'].forEach((v) {
+        results.add(new TarjetaPresentacion.fromJson(v));
+      });
+    }
+  }
+}
+
 class TarjetaPresentacion{
   int idTarjeta;
   String usuario;
@@ -17,7 +32,8 @@ class TarjetaPresentacion{
       this.especialidad,
       this.telefono,
       this.correo,
-      this.direccion});
+      this.direccion,
+      this.tarjetaColor});
 
   factory TarjetaPresentacion.fromJson(Map<String, dynamic> json) {
     return TarjetaPresentacion(
@@ -27,7 +43,8 @@ class TarjetaPresentacion{
     especialidad : json['especialidad'],
     telefono : json['telefono'],
     correo : json['correo'],
-    direccion : json['direccion']
+    direccion : json['direccion'],
+    tarjetaColor : json['imagen']
     );
   }
 }

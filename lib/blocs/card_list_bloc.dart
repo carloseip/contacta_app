@@ -11,6 +11,7 @@ class CardListBloc{
   BehaviorSubject<List<CardResults>> _cardsCollection = BehaviorSubject<List<CardResults>>();
 
   List<CardResults> _cardResults;
+  List<TarjetaPresentacion> _tarjetaResults;
 
   //Retrieve data from Stream
   Stream<List<CardResults>> get cardList => _cardsCollection.stream;
@@ -26,20 +27,23 @@ class CardListBloc{
   }
 
   Future<List<TarjetaPresentacion>> getTarjetas() async{
+    List<TarjetaPresentacion> lista;
     final response = await http.get("https://contacta.azurewebsites.net/api/tarjetaspresentacion");
     if (response.statusCode == 200) {
-    Map<String, dynamic> mapResponse = json.decode(response.body);
-    if (mapResponse["mensaje"] == "correcto") {
-      final tasks = mapResponse["value"].cast<Map<String, dynamic>>();
-      return tasks.map<TarjetaPresentacion>((json){
-        return TarjetaPresentacion.fromJson(json);
-      }).toList();
+      Map<String, dynamic> mapResponse = json.decode(response.body);
+      _tarjetaResults = TarjetaModel.fromJson(mapResponse).results;
+      if (mapResponse["mensaje"] == "correcto") {
+        final tasks = mapResponse["value"].cast<Map<String, dynamic>>();
+        lista = tasks.map<TarjetaPresentacion>((json){
+          return TarjetaPresentacion.fromJson(json);
+        }).toList();
+        return lista;
+      } else {
+        return [];
+      }
     } else {
-      return [];
+      throw Exception('Error al cargar tarjetas');
     }
-  } else {
-    throw Exception('Error al cargar tarjetas');
-  }
   }
 
   CardListBloc(){
