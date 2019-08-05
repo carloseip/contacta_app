@@ -17,28 +17,28 @@ class CardModel{
 
 class CardResults{
   String cardHolderName;
-  String cardNumber;
-  String cardMonth;
-  String cardYear;
-  String cardCvv;
+  String cardPhoneNumber;
+  String cardPuesto;
+  String cardAddress;
+  //String cardCvv;
   Color cardColor;
   String cardType;
 
   CardResults(
       {this.cardHolderName,
-      this.cardNumber,
-      this.cardMonth,
-      this.cardYear,
-      this.cardCvv,
+      this.cardPhoneNumber,
+      this.cardPuesto,
+      this.cardAddress,
+      //this.cardCvv,
       this.cardColor,
       this.cardType});
 
   CardResults.fromJson(Map<String, dynamic> json) {
     cardHolderName = json['cardHolderName'];
-    cardNumber = json['cardNumber'];
-    cardMonth = json['cardMonth'];
-    cardYear = json['cardYear'];
-    cardCvv = json['cardCvv']; //Card Verification Number
+    cardPhoneNumber = json['cardPhoneNumber'];
+    cardPuesto = json['cardPuesto'];
+    cardAddress = json['cardAddress'];
+    //cardCvv = json['cardCvv']; //Card Verification Number
     cardColor = json['cardColor'];
     cardType = json['cardType'];
   }

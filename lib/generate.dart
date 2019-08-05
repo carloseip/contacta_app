@@ -29,7 +29,7 @@ class GenerateScreenState extends State<GenerateScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Págalo Toditito'),
+        title: Text('Contacta'), 
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.share),

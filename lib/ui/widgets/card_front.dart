@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../helpers/card_colors.dart';
-import '../widgets/card_chip.dart';
+//import '../widgets/card_chip.dart';
 import '../../blocs/card_bloc.dart';
 import '../../blocs/bloc_provider.dart';
 
@@ -12,39 +12,24 @@ class CardFront extends StatelessWidget{
   Widget build(BuildContext context) {
     final CardBloc bloc = BlocProvider.of<CardBloc>(context);
 
-    final _cardNumber = Padding(
-      padding: const EdgeInsets.only(top: 10.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: <Widget>[
-          StreamBuilder<String>(
-            stream: bloc.cardNumber,
-            builder: (context, snapshot) {
-              return snapshot.hasData
-                  ? _formatCardNumber(snapshot.data)
-                  : _formatCardNumber('0000000000000000');
-            },
-          ),
-        ],
-      ),
-    );
-
+    
+/*
     final _cardLastNumber = Padding(
         padding: const EdgeInsets.only(top: 1.0, left: 55.0),
         child: StreamBuilder<String>(
-          stream: bloc.cardNumber,
+          stream: bloc.cardPhoneNumber,
           builder: (context, snapshot) {
             return Text(
               snapshot.hasData && snapshot.data.length >= 15
                   ? snapshot.data
-                      .replaceAll(RegExp(r'\s+\b|\b\s'), '')
-                      .substring(12)
-                  : '0000',
+                      .replaceAll(RegExp(r''), '')
+                      .substring(9)
+                  : '000',
               style: TextStyle(color: Colors.white, fontSize: 8.0),
             );
           },
-        ));
-
+        ));*/
+/*
     final _cardValidThru = Padding(
       padding: const EdgeInsets.only(top: 8.0),
       child: Row(
@@ -66,7 +51,7 @@ class CardFront extends StatelessWidget{
             width: 5.0,
           ),
           StreamBuilder(
-            stream: bloc.cardMonth,
+            stream: bloc.cardPuesto,
             builder: (context, snapshot) {
               return Text(
                 snapshot.hasData ? snapshot.data : '00',
@@ -78,7 +63,7 @@ class CardFront extends StatelessWidget{
             },
           ),
           StreamBuilder<String>(
-              stream: bloc.cardYear,
+              stream: bloc.cardAddress,
               builder: (context, snapshot) {
                 return Text(
                   snapshot.hasData && snapshot.data.length > 2
@@ -89,31 +74,22 @@ class CardFront extends StatelessWidget{
               })
         ],
       ),
-    );
+    );*/
 
-    final _cardOwner = Padding(
-      padding: const EdgeInsets.only(top: 15.0, left: 44.0),
-      child: StreamBuilder(
-        stream: bloc.cardHolderName,
-        builder: (context, snapshot) => Text(
-              snapshot?.data ?? 'DUEÑO DE LA TARJETA',
-              style: TextStyle(color: Colors.white, fontSize: 18.0),
-            ),
-      ),
-    );
+
 
     final _cardLogo = Column(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: <Widget>[
         Padding(
-          padding: const EdgeInsets.only(top: 25.0, right: 45.0),
+          padding: const EdgeInsets.only(top: 5.0, right: 5.0),
           child: Image(
             image: AssetImage('assets/visa_logo.png'),
-            width: 65.0,
-            height: 32.0,
+            width: 170.0,
+            height: 120.0,
           ),
         ),
-        Padding(
+        /*Padding(
           padding: const EdgeInsets.only(right: 45.0),
           child: StreamBuilder(
               stream: bloc.cardType,
@@ -126,9 +102,63 @@ class CardFront extends StatelessWidget{
                       fontWeight: FontWeight.w400),
                 );
               }),
-        ),
+        ),*/
       ],
     );
+
+  final _cardOwner = Padding(
+      padding: const EdgeInsets.only(top: 5.0, left: 20.0),
+      child: StreamBuilder(
+        stream: bloc.cardHolderName,
+        builder: (context, snapshot) => Text(
+              snapshot?.data ?? 'DUEÑO DE LA TARJETA',
+              style: TextStyle(color: Colors.white, fontSize: 18.0),
+            ),
+      ),
+    );
+
+    
+    //________________
+    final _cardPuesto= Padding(
+      padding: const EdgeInsets.only(top: 4.0, left: 20.0),
+      child: StreamBuilder(        
+      stream: bloc.cardPuesto,
+        builder: (context, snapshot) => Text(
+              snapshot?.data ?? 'Puesto',
+              style: TextStyle(color: Colors.white, fontSize: 16.0),
+            ),
+      ),
+    );
+
+    final _cardPhoneNumber = Padding(
+      padding: const EdgeInsets.only(top: 2.0, right: 183.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: <Widget>[
+          StreamBuilder<String>(
+            stream: bloc.cardPhoneNumber,
+            builder: (context, snapshot) {
+              return snapshot.hasData
+                  ? _formatCardPhoneNumber(snapshot.data)
+                  : _formatCardPhoneNumber('000000000');
+            },
+          ),
+        ],
+      ),
+    );
+    final _cardAddress= Padding(
+      padding: const EdgeInsets.only(top: 20.0, left: 20.0),
+      child: StreamBuilder(        
+      stream: bloc.cardAddress,
+        builder: (context, snapshot) => Text(
+              snapshot?.data ?? 'Dirección',
+              style: TextStyle(color: Colors.white, fontSize: 14.0),
+            ),
+      ),
+    );
+//_____________________________________________
+
+  
 
     return StreamBuilder<int>(
         stream: bloc.cardColorIndexSelected,
@@ -144,11 +174,10 @@ class CardFront extends StatelessWidget{
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: <Widget>[
                   _cardLogo,
-                  CardChip(),
-                  _cardNumber,
-                  _cardLastNumber,
-                  _cardValidThru,
                   _cardOwner,
+                  _cardPuesto,
+                  _cardPhoneNumber,
+                  _cardAddress,                  
                 ],
               ),
             ),
@@ -156,24 +185,24 @@ class CardFront extends StatelessWidget{
         });
   }
 
-  Widget _formatCardNumber(String cardNumber) {
-    cardNumber = cardNumber.replaceAll(RegExp(r'\s+\b|\b\s'), '');
+  Widget _formatCardPhoneNumber(String cardPhoneNumber) {
+    cardPhoneNumber = cardPhoneNumber.replaceAll(RegExp(r''), '');
     List<Widget> numberList = new List<Widget>();
     var counter = 0;
-    for (var i = 0; i < cardNumber.length; i++) {
+    for (var i = 0; i < cardPhoneNumber.length; i++) {
       counter += 1;
       numberList.add(
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 1.0),
+          padding: const EdgeInsets.symmetric(horizontal: 0.5),
           child: Text(
-            cardNumber[i],
+            cardPhoneNumber[i],
             style: TextStyle(color: Colors.white, fontSize: 16),
           ),
         ),
       );
-      if (counter == 4) {
+      if (counter == 3) {
         counter = 0;
-        numberList.add(SizedBox(width: 26.0));
+        numberList.add(SizedBox(width: 5.0));
       }
     }
     return Row(

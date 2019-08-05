@@ -12,7 +12,7 @@ class CardType extends StatelessWidget {
       child: Text.rich(
         TextSpan(
             text:
-                'Podrás elegir la tarjeta que desees cuando quieras pagar tus productos. Registra ahora tus tarjetas para que al momento de pagar lo hagas en cuestión de segundos.. ',
+                'Busca tus contactos en cuestión de segundos.. ',
             style: TextStyle(fontSize: 14.0, color: Colors.grey[700]),
             children: <TextSpan>[
               TextSpan(
@@ -27,7 +27,7 @@ class CardType extends StatelessWidget {
 
     return Scaffold(
         appBar: MyAppBar(
-            appBarTitle: 'Selecciona el tipo de tarjeta',
+            appBarTitle: 'Selecciona tipo de tarjeta',
             leadingIcon: Icons.clear,
             context: context),
         body: Container(
@@ -37,12 +37,12 @@ class CardType extends StatelessWidget {
               children: <Widget>[
                 _buildRaisedButton(
                     buttonColor: Colors.redAccent,
-                    buttonText: 'Tarjeta de Crédito',
+                    buttonText: 'Tarjeta de Personal',
                     textColor: Colors.white,
                     context: context),
                 _buildRaisedButton(
                     buttonColor: Colors.grey[100],
-                    buttonText: 'Tarjeta de Débito',
+                    buttonText: 'Tarjeta de Corporativa',
                     textColor: Colors.grey[600],
                     context: context),
                 _buildRaisedButton(
