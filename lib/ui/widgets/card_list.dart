@@ -1,16 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:qr_scanner_generator/models/tarjetapresentacion.dart';
 import '../../models/card_model.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import '../../blocs/card_list_bloc.dart';
-import '../widgets/card_chip.dart';
+import 'package:http/http.dart' as http;
 
 class CardList extends StatelessWidget {
+
+  final List<TarjetaPresentacion> tarjetas;
+
+  const CardList({Key key, this.tarjetas}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     final _screenSize = MediaQuery.of(context).size;
+    // return FutureBuilder(
+    //   future: cardListBloc.getTarjetas(),
+    //       builder: (context, snapshot) {
+    //         if(snapshot.hasError) {
+    //           print(snapshot.error);
+    //         }
+    //         return snapshot.hasData ? CardList(tarjetas: snapshot.data):Center(child: CircularProgressIndicator()
+    //         );
+    //       });
 
-    return StreamBuilder<List<CardResults>>(
-      stream: cardListBloc.cardList,
+    return FutureBuilder<List<TarjetaPresentacion>>(
+      future: cardListBloc.getTarjetas(),
       builder: (context, snapshot) {
         return Column(
           children: <Widget>[
@@ -20,7 +35,7 @@ class CardList extends StatelessWidget {
                     height: _screenSize.height * 0.8,
                     child: Swiper(
                       itemBuilder: (BuildContext context, int index) {
-                        return CardFrontList(
+                        return TarjetaPresentacionModel(
                           cardModel: snapshot.data[index],
                         );
                       },
@@ -36,6 +51,122 @@ class CardList extends StatelessWidget {
     );
   }
 }
+
+
+class TarjetaPresentacionModel extends StatelessWidget {
+  final TarjetaPresentacion cardModel;
+
+  TarjetaPresentacionModel({this.cardModel});
+  @override
+  Widget build(BuildContext context) {
+
+    final _cardLogo = Column(
+      crossAxisAlignment: CrossAxisAlignment.end,
+      children: <Widget>[
+        Padding(
+          padding: EdgeInsets.only(top: 25.0, right: 52.0),
+          child: Image(
+            image: AssetImage('assets/visa_logo.png'),
+            width: 80.0,
+            height: 80.0,
+          ),
+        ),
+        // Padding(
+        //   padding: EdgeInsets.only(right: 52.0),
+        //   child: Text(
+        //     cardModel.cardType,
+        //     style: TextStyle(
+        //         color: Colors.white,
+        //         fontSize: 14.0,
+        //         fontWeight: FontWeight.w400),
+        //   ),
+        // ),
+      ],
+    );
+
+
+    final _cardOwner = Padding(
+      padding: const EdgeInsets.only(top: 12.0, left: 50.0),
+      child: Text(
+        cardModel.usuario,
+        style: TextStyle(color: Colors.white, fontSize: 16.0),
+      ),
+    );
+
+    final _telefono = Padding(
+      padding: const EdgeInsets.only(top: 12.0, left: 50.0),
+      child: Text(
+        cardModel.telefono,
+        style: TextStyle(color: Colors.white, fontSize: 16.0),
+      ),
+    );
+
+    final _puesto = Padding(
+      padding: const EdgeInsets.only(top: 12.0, left: 50.0),
+      child: Text(
+        cardModel.cargo,
+        style: TextStyle(color: Colors.white, fontSize: 16.0),
+      ),
+    );
+
+    return Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(15.0),
+          color: Colors.black,
+        ),
+        child: RotatedBox(
+          quarterTurns: 0,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              _cardLogo,
+              //CardChip(),
+              _telefono,
+              //_cardLastNumber,
+              //_cardValidThru,
+              _cardOwner,
+              _puesto,
+            ],
+          ),
+        ));
+  }
+
+  // Widget _buildDots() {
+  //   List<Widget> dotList = new List<Widget>();
+  //   // var counter = 0;
+  //   // for (var i = 0; i < 12; i++) {
+  //   //   counter += 1;
+  //   //   dotList.add(
+  //   //     Padding(
+  //   //       padding: const EdgeInsets.symmetric(horizontal: 2.0),
+  //   //       child: Container(
+  //   //         width: 6.0,
+  //   //         height: 6.0,
+  //   //         decoration: new BoxDecoration(
+  //   //           color: Colors.white,
+  //   //           shape: BoxShape.circle,
+  //   //         ),
+  //   //       ),
+  //   //     ),
+  //   //   );
+  //   //   if (counter == 4) {
+  //   //     counter = 0;
+  //   //     dotList.add(SizedBox(width: 20.0));
+  //   //   }
+  //   // }
+  //   dotList.add(_buildNumbers());
+  //   return Row(children: dotList);
+  // }
+
+  // Widget _buildNumbers() {
+  //   return Text(
+  //     cardModel.telefono/*.substring(12)*/,
+  //     style: TextStyle(color: Colors.white),
+  //   );
+  // }
+}
+
+  
 
 class CardFrontList extends StatelessWidget {
   final CardResults cardModel;

@@ -1,9 +1,11 @@
 import 'dart:async';
+import 'package:qr_scanner_generator/models/tarjetapresentacion.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import '../models/card_model.dart';
 import 'dart:convert';
 import '../helpers/card_colors.dart';
+import 'package:http/http.dart' as http;
 
 class CardListBloc{
   BehaviorSubject<List<CardResults>> _cardsCollection = BehaviorSubject<List<CardResults>>();
@@ -21,6 +23,23 @@ class CardListBloc{
       _cardResults[i].cardColor = CardColor.baseColors[i];
     }
     _cardsCollection.sink.add(_cardResults);
+  }
+
+  Future<List<TarjetaPresentacion>> getTarjetas() async{
+    final response = await http.get("https://contacta.azurewebsites.net/api/tarjetaspresentacion");
+    if (response.statusCode == 200) {
+    Map<String, dynamic> mapResponse = json.decode(response.body);
+    if (mapResponse["mensaje"] == "correcto") {
+      final tasks = mapResponse["value"].cast<Map<String, dynamic>>();
+      return tasks.map<TarjetaPresentacion>((json){
+        return TarjetaPresentacion.fromJson(json);
+      }).toList();
+    } else {
+      return [];
+    }
+  } else {
+    throw Exception('Error al cargar tarjetas');
+  }
   }
 
   CardListBloc(){
