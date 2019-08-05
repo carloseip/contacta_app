@@ -69,81 +69,87 @@ class _CardCreate extends State<CardCreate>{
               errorText: snapshot.error,
             ),
           );
-        });
+        });   
 
-    final _cardNumber = Padding(
-      padding: const EdgeInsets.only(top: 16.0),
+    final _cardPuesto = Padding(
+      padding: const EdgeInsets.only(top: 5.0),
       child: StreamBuilder(
-          stream: bloc.cardNumber,
+        stream: bloc.cardPuesto,
+        builder: (context, snapshot) {
+          return Container(
+          width: 330.0,
+          child: TextField(
+            onChanged: bloc.changeCardPuesto,
+            keyboardType: TextInputType.text,
+            maxLength: 50,
+            maxLengthEnforced: true,
+            decoration: InputDecoration(
+              border: InputBorder.none,
+              filled: true,
+              fillColor: Colors.white,
+              hintText: 'Puesto',
+              counterText: '',
+              errorText: snapshot.error,
+            ),
+          ),
+        );
+      }),
+    );
+
+    final _cardPhoneNumber = Padding(
+      padding: const EdgeInsets.only(top: 5.0),
+      child: StreamBuilder(
+          stream: bloc.cardPhoneNumber,
           builder: (context, snapshot) {
             return TextField(
-              onChanged: bloc.changeCardNumber,
+              onChanged: bloc.changeCardPhoneNumber,
               keyboardType: TextInputType.number,
-              maxLength: 19,
+              maxLength: 9,
               maxLengthEnforced: true,
               inputFormatters: [
                 MaskedTextInputFormatter(
-                  mask: 'xxxx xxxx xxxx xxxx',
-                  separator: ' ',
+                  mask: 'xxx xxx xxx',
+                  separator: '',
                 ),
               ],
               decoration: InputDecoration(
                 border: InputBorder.none,
                 filled: true,
                 fillColor: Colors.white,
-                hintText: 'Número de Tarjeta',
-                counterText: '',
+                hintText: 'Número de Telefono',
+                //counterText: '',
                 errorText: snapshot.error,
               ),
             );
           }),
     );
 
-    final _cardMonth = StreamBuilder(
-      stream: bloc.cardMonth,
-      builder: (context, snapshot) {
-        return Container(
-          width: 70.0,
+    final _cardAddress = Padding(
+      padding: const EdgeInsets.only(top: 5.0),
+      child: StreamBuilder(
+        stream: bloc.cardAddress,
+        builder: (context, snapshot) {
+          return Container(
+          width: 330.0,
           child: TextField(
-            onChanged: bloc.changeCardMonth,
-            keyboardType: TextInputType.number,
-            maxLength: 2,
+            onChanged: bloc.changeCardAddress,
+            keyboardType: TextInputType.text,
+            maxLength: 100,
             maxLengthEnforced: true,
             decoration: InputDecoration(
               border: InputBorder.none,
               filled: true,
               fillColor: Colors.white,
-              hintText: 'MM',
+              hintText: 'Address',
               counterText: '',
               errorText: snapshot.error,
             ),
           ),
         );
-      },
+      }),
     );
 
-    final _cardYear = StreamBuilder(
-        stream: bloc.cardYear,
-        builder: (context, snapshot) {
-          return Container(
-            width: 80.0,
-            child: TextField(
-              onChanged: bloc.changeCardYear,
-              keyboardType: TextInputType.number,
-              maxLength: 4,
-              maxLengthEnforced: true,
-              decoration: InputDecoration(
-                border: InputBorder.none,
-                filled: true,
-                fillColor: Colors.white,
-                hintText: 'YYYY',
-                counterText: '',
-                errorText: snapshot.error,
-              ),
-            ),
-          );
-        });
-
+/*
     final _cardVerificationValue = StreamBuilder(
         stream: bloc.cardCvv,
         builder: (context, snapshot) {
@@ -165,7 +171,7 @@ class _CardCreate extends State<CardCreate>{
             ),
           );
         });
-
+*/
     final _saveCard = StreamBuilder(
       stream: bloc.savecardValid,
       builder: (context, snapshot) {
@@ -214,22 +220,15 @@ class _CardCreate extends State<CardCreate>{
                 Expanded(
                   flex: 6,
                   child: Padding(
-                    padding: const EdgeInsets.all(20.0),
+                    padding: const EdgeInsets.all(18.0),
                     child: Column(
                       children: <Widget>[
-                        SizedBox(height: 8.0),
+                        SizedBox(height: 2.0),
                         _cardHolderName,
-                        _cardNumber,
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: <Widget>[
-                            _cardMonth,
-                            SizedBox(width: 16.0),
-                            _cardYear,
-                            SizedBox(width: 16.0),
-                            _cardVerificationValue,
-                          ],
-                        ),
+                        _cardPuesto,
+                        _cardPhoneNumber,
+                        _cardAddress,
+                        
                         SizedBox(height: 20.0),
                         cardColors(bloc),
                         SizedBox(height: 50.0),

@@ -47,7 +47,7 @@ class CardBack extends StatelessWidget {
                         ),
                         child: Center(
                           child: StreamBuilder(
-                              stream: bloc.cardCvv,
+                              //stream: bloc.cardCvv,
                               builder: (context, snapshot) {
                                 return Text(
                                   snapshot.hasData ? snapshot.data : '',

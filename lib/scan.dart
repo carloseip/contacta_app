@@ -30,7 +30,7 @@ class _ScanState extends State<ScanScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: new AppBar(
-          title: new Text('Págalo Toditito'),
+          title: new Text('Contacta'),
         ),
         body: new Center(
           child: new Column(
