@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-
 import 'app.dart';
+import 'navigation.dart';
 
 class LoginScreen3 extends StatefulWidget {
   @override
@@ -32,10 +32,9 @@ class _LoginScreen3State extends State<LoginScreen3>
             padding: EdgeInsets.only(top: 90.0),
             child: Center(
               child: Image(
-                image: AssetImage('assets/visa_logo.png'),
-                width: 200.0,
-                height: 200.0
-              ),
+                  image: AssetImage('assets/visa_logo.png'),
+                  width: 200.0,
+                  height: 200.0),
             ),
           ),
           new Container(
@@ -135,10 +134,9 @@ class _LoginScreen3State extends State<LoginScreen3>
             padding: EdgeInsets.all(50.0),
             child: Center(
               child: Image(
-                image: AssetImage('assets/creditcardchipsilver.png'),
-                width: 170.0,
-                height: 170.0
-              ),
+                  image: AssetImage('assets/creditcardchipsilver.png'),
+                  width: 170.0,
+                  height: 170.0),
             ),
           ),
           new Row(
@@ -165,9 +163,7 @@ class _LoginScreen3State extends State<LoginScreen3>
             decoration: BoxDecoration(
               border: Border(
                 bottom: BorderSide(
-                    color: Colors.white,
-                    width: 0.5,
-                    style: BorderStyle.solid),
+                    color: Colors.white, width: 0.5, style: BorderStyle.solid),
               ),
             ),
             padding: const EdgeInsets.only(left: 0.0, right: 10.0),
@@ -219,9 +215,7 @@ class _LoginScreen3State extends State<LoginScreen3>
             decoration: BoxDecoration(
               border: Border(
                 bottom: BorderSide(
-                    color: Colors.white,
-                    width: 0.5,
-                    style: BorderStyle.solid),
+                    color: Colors.white, width: 0.5, style: BorderStyle.solid),
               ),
             ),
             padding: const EdgeInsets.only(left: 0.0, right: 10.0),
@@ -335,12 +329,10 @@ class _LoginScreen3State extends State<LoginScreen3>
           Container(
             padding: EdgeInsets.only(top: 40.0, bottom: 17.0),
             child: Center(
-              child: Image(
-                image: AssetImage('assets/creditcardchipsilver.png'),
-                width: 150.0,
-                height: 150.0
-              )
-            ),
+                child: Image(
+                    image: AssetImage('assets/creditcardchipsilver.png'),
+                    width: 150.0,
+                    height: 150.0)),
           ),
           new Row(
             children: <Widget>[
@@ -366,9 +358,7 @@ class _LoginScreen3State extends State<LoginScreen3>
             decoration: BoxDecoration(
               border: Border(
                 bottom: BorderSide(
-                    color: Colors.white,
-                    width: 0.5,
-                    style: BorderStyle.solid),
+                    color: Colors.white, width: 0.5, style: BorderStyle.solid),
               ),
             ),
             padding: const EdgeInsets.only(left: 0.0, right: 10.0),
@@ -420,9 +410,7 @@ class _LoginScreen3State extends State<LoginScreen3>
             decoration: BoxDecoration(
               border: Border(
                 bottom: BorderSide(
-                    color: Colors.white,
-                    width: 0.5,
-                    style: BorderStyle.solid),
+                    color: Colors.white, width: 0.5, style: BorderStyle.solid),
               ),
             ),
             padding: const EdgeInsets.only(left: 0.0, right: 10.0),
@@ -474,9 +462,7 @@ class _LoginScreen3State extends State<LoginScreen3>
             decoration: BoxDecoration(
               border: Border(
                 bottom: BorderSide(
-                    color: Colors.white,
-                    width: 0.5,
-                    style: BorderStyle.solid),
+                    color: Colors.white, width: 0.5, style: BorderStyle.solid),
               ),
             ),
             padding: const EdgeInsets.only(left: 0.0, right: 10.0),
@@ -536,7 +522,12 @@ class _LoginScreen3State extends State<LoginScreen3>
                       borderRadius: new BorderRadius.circular(30.0),
                     ),
                     color: Colors.white,
-                    onPressed: () => {},
+                    onPressed: () => {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => MyApp()),
+                      ),
+                    },
                     child: new Container(
                       padding: const EdgeInsets.symmetric(
                         vertical: 17.0,
@@ -550,7 +541,7 @@ class _LoginScreen3State extends State<LoginScreen3>
                               "REGISTRARSE",
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                fontSize: 19,
+                                  fontSize: 19,
                                   color: Color.fromRGBO(255, 147, 73, 1.0),
                                   fontWeight: FontWeight.bold),
                             ),

@@ -1,3 +1,4 @@
+import 'package:flare_flutter/flare_actor.dart';
 import 'package:qr_scanner_generator/scan.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_pro/carousel_pro.dart';
@@ -146,21 +147,26 @@ class RandomWordsState extends State<RandomWords> {
       ),
       body: ListView(
         children: <Widget>[
-          imageCarousel,
-          Padding(
-            padding: EdgeInsets.symmetric(vertical: 100.0, horizontal: 20.0),
-            child: RaisedButton(
-                color: Colors.redAccent,
-                textColor: Colors.white,
-                splashColor: Colors.blueGrey,
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => ScanScreen()),
-                  );
-                },
-                child: const Text('Escanea tus Productos')),
-          ),
+          // imageCarousel,
+          // Padding(
+          //   padding: EdgeInsets.symmetric(vertical: 100.0, horizontal: 20.0),
+          //   child: RaisedButton(
+          //       color: Colors.redAccent,
+          //       textColor: Colors.white,
+          //       splashColor: Colors.blueGrey,
+          //       onPressed: () {
+          //         Navigator.push(
+          //           context,
+          //           MaterialPageRoute(builder: (context) => ScanScreen()),
+          //         );
+          //       },
+          //       child: const Text('Escanea tus Productos')),
+          // ),
+          Container(
+            height: 500,
+            child: FlareActor('assets/flutter_developer.flr',
+            animation: "idle",)
+          )
         ],
       ),
     );

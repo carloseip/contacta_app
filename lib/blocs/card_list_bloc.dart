@@ -11,7 +11,6 @@ class CardListBloc{
   BehaviorSubject<List<CardResults>> _cardsCollection = BehaviorSubject<List<CardResults>>();
 
   List<CardResults> _cardResults;
-  List<TarjetaPresentacion> _tarjetaResults;
 
   //Retrieve data from Stream
   Stream<List<CardResults>> get cardList => _cardsCollection.stream;
@@ -31,7 +30,6 @@ class CardListBloc{
     final response = await http.get("https://contacta.azurewebsites.net/api/tarjetaspresentacion");
     if (response.statusCode == 200) {
       Map<String, dynamic> mapResponse = json.decode(response.body);
-      _tarjetaResults = TarjetaModel.fromJson(mapResponse).results;
       if (mapResponse["mensaje"] == "correcto") {
         final tasks = mapResponse["value"].cast<Map<String, dynamic>>();
         lista = tasks.map<TarjetaPresentacion>((json){

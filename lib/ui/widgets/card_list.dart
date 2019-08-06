@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:qr_scanner_generator/blocs/orientacion.dart';
+import 'package:qr_scanner_generator/helpers/utils.dart';
 import 'package:qr_scanner_generator/models/tarjetapresentacion.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import '../../blocs/card_list_bloc.dart';
 //import '../widgets/card_chip.dart';
 //import '../../models/card_model.dart';
 
-class CardList extends StatelessWidget {
+class CardList extends StatelessWidget with PortraitModeMixin{
 
   final List<TarjetaPresentacion> tarjetas;
 
@@ -13,6 +15,7 @@ class CardList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     final _screenSize = MediaQuery.of(context).size;
     return FutureBuilder<List<TarjetaPresentacion>>(
       future: cardListBloc.getTarjetas(),
@@ -24,13 +27,14 @@ class CardList extends StatelessWidget {
                     padding: EdgeInsets.only(top: 120.0),
                     child: new Row(
                       mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: <Widget>[
-                        Text(
-                          "Bienvenido...\nAcá aparecerán las tarjetas \nde tus contactos",
-                          style: TextStyle(
-                            color: Colors.purpleAccent,
-                            fontSize: 25.0,
-                          ),
+                        ColorLoader4(
+                          dotOneColor: Color.fromRGBO(2, 189, 199, 1.0),//aqua
+                          dotTwoColor: Color.fromRGBO(255, 182, 0, 1.0),//yellow
+                          dotThreeColor: Color.fromRGBO(252, 64, 103, 1.0),//yellow
+                          dotType: DotType.circle,
+                          duration: Duration(milliseconds: 900),
                         )
                       ],
                     ),
@@ -94,13 +98,13 @@ class TarjetaPresentacionModel extends StatelessWidget {
       ),
     );
 
-    final _especialidad = Padding(
-      padding: const EdgeInsets.only(top: 4.0, left: 27.0),
-      child: Text(
-        'Escecialidad: ${cardModel.especialidad}',
-        style: TextStyle(color: Colors.white, fontSize: 14.0, fontStyle: FontStyle.italic),
-      ),
-    );
+    // final _especialidad = Padding(
+    //   padding: const EdgeInsets.only(top: 4.0, left: 27.0),
+    //   child: Text(
+    //     'Escecialidad: ${cardModel.especialidad}',
+    //     style: TextStyle(color: Colors.white, fontSize: 14.0, fontStyle: FontStyle.italic),
+    //   ),
+    // );
 
     final _telefono = Padding(
       padding: const EdgeInsets.only(top: 8.0, left: 27.0),

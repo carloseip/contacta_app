@@ -4,7 +4,6 @@ description: A new Flutter project.
 dependencies:
   flutter:
     sdk: flutter
-
   carousel_pro: ^0.0.13
   cupertino_icons: ^0.1.2
   http: any
@@ -13,6 +12,7 @@ dependencies:
   flutter_swiper: ^1.1.4
   barcode_scan: ^0.0.4
   qr_flutter: ^1.1.1
+  flare_flutter: ^1.2.0
 
 
 dev_dependencies:
@@ -35,5 +35,6 @@ flutter:
     - assets/pol-background.jpg
     - assets/card_back.jpg
     - data/initialData.json
+    - assets/flutter_developer.flr
 
 
