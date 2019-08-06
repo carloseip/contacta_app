@@ -11,13 +11,7 @@ class App extends StatelessWidget{
         elevation: 0.0,
         backgroundColor: Colors.white,
         centerTitle: true,
-        title: Text(
-            'Contacta',
-            style: TextStyle(
-                fontSize: 16.0,
-                color: Colors.black,
-                fontWeight: FontWeight.w600),
-        ),
+        title: Image.asset('assets/logo_pay.png', height: 50.0),
         // leading: IconButton(
         //   icon: Icon(Icons.menu,
         //   color: Colors.black),

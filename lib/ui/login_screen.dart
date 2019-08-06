@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:qr_scanner_generator/ui/navigation.dart';
 
 import 'app.dart';
 
@@ -27,38 +26,16 @@ class _LoginScreen3State extends State<LoginScreen3>
           fit: BoxFit.fill,
         ),
       ),
-      child: new Column(
+      child: new ListView(
         children: <Widget>[
           Container(
-            padding: EdgeInsets.only(top: 70.0),
+            padding: EdgeInsets.only(top: 90.0),
             child: Center(
               child: Image(
                 image: AssetImage('assets/visa_logo.png'),
                 width: 200.0,
                 height: 200.0
               ),
-            ),
-          ),
-          Container(
-            padding: EdgeInsets.only(top: 20.0),
-            child: new Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                // Text(
-                //   "Págalo",
-                //   style: TextStyle(
-                //     color: Colors.white,
-                //     fontSize: 20.0,
-                //   ),
-                // ),
-                // Text(
-                //   "¡Contacta a tu alrededor ya!",
-                //   style: TextStyle(
-                //       color: Colors.pinkAccent,
-                //       fontSize: 25.0,
-                //       fontWeight: FontWeight.bold),
-                // ),
-              ],
             ),
           ),
           new Container(
@@ -144,46 +121,24 @@ class _LoginScreen3State extends State<LoginScreen3>
     return new Container(
       height: MediaQuery.of(context).size.height,
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Color.fromRGBO(2, 189, 199, 1.0),
         image: DecorationImage(
           colorFilter: new ColorFilter.mode(
-              Colors.black.withOpacity(0.05), BlendMode.dstATop),
+              Colors.transparent.withOpacity(0.07), BlendMode.dstATop),
           image: AssetImage('assets/logo_app.png'),
-          fit: BoxFit.cover,
+          fit: BoxFit.fill,
         ),
       ),
-      child: new Column(
+      child: new ListView(
         children: <Widget>[
           Container(
             padding: EdgeInsets.all(50.0),
             child: Center(
-              child: Icon(
-                Icons.payment,
-                color: Colors.redAccent,
-                size: 70.0,
+              child: Image(
+                image: AssetImage('assets/creditcardchipsilver.png'),
+                width: 170.0,
+                height: 170.0
               ),
-            ),
-          ),
-          Container(
-            padding: EdgeInsets.only(bottom: 20.0),
-            child: new Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Text(
-                  "Págalo",
-                  style: TextStyle(
-                    color: Colors.redAccent,
-                    fontSize: 20.0,
-                  ),
-                ),
-                Text(
-                  "Toditito",
-                  style: TextStyle(
-                      color: Colors.redAccent,
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.bold),
-                ),
-              ],
             ),
           ),
           new Row(
@@ -192,11 +147,11 @@ class _LoginScreen3State extends State<LoginScreen3>
                 child: new Padding(
                   padding: const EdgeInsets.only(left: 40.0),
                   child: new Text(
-                    "DNI",
+                    "Correo",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      color: Colors.redAccent,
-                      fontSize: 15.0,
+                      color: Colors.white,
+                      fontSize: 19.0,
                     ),
                   ),
                 ),
@@ -210,7 +165,7 @@ class _LoginScreen3State extends State<LoginScreen3>
             decoration: BoxDecoration(
               border: Border(
                 bottom: BorderSide(
-                    color: Colors.redAccent,
+                    color: Colors.white,
                     width: 0.5,
                     style: BorderStyle.solid),
               ),
@@ -222,12 +177,14 @@ class _LoginScreen3State extends State<LoginScreen3>
               children: <Widget>[
                 new Expanded(
                   child: TextField(
+                    style: new TextStyle(color: Colors.white),
+                    cursorColor: Colors.white,
                     obscureText: true,
                     textAlign: TextAlign.left,
                     decoration: InputDecoration(
                       border: InputBorder.none,
-                      hintText: '******43',
-                      hintStyle: TextStyle(color: Colors.grey),
+                      hintText: 'ceduardoinga@gmail.com',
+                      hintStyle: TextStyle(color: Colors.white),
                     ),
                   ),
                 ),
@@ -236,6 +193,7 @@ class _LoginScreen3State extends State<LoginScreen3>
           ),
           Divider(
             height: 15.0,
+            color: Colors.transparent,
           ),
           new Row(
             children: <Widget>[
@@ -246,8 +204,8 @@ class _LoginScreen3State extends State<LoginScreen3>
                     "Clave",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      color: Colors.redAccent,
-                      fontSize: 15.0,
+                      color: Colors.white,
+                      fontSize: 19.0,
                     ),
                   ),
                 ),
@@ -261,7 +219,7 @@ class _LoginScreen3State extends State<LoginScreen3>
             decoration: BoxDecoration(
               border: Border(
                 bottom: BorderSide(
-                    color: Colors.redAccent,
+                    color: Colors.white,
                     width: 0.5,
                     style: BorderStyle.solid),
               ),
@@ -273,12 +231,14 @@ class _LoginScreen3State extends State<LoginScreen3>
               children: <Widget>[
                 new Expanded(
                   child: TextField(
+                    style: new TextStyle(color: Colors.white),
+                    cursorColor: Colors.white,
                     obscureText: true,
                     textAlign: TextAlign.left,
                     decoration: InputDecoration(
                       border: InputBorder.none,
                       hintText: '*********',
-                      hintStyle: TextStyle(color: Colors.grey),
+                      hintStyle: TextStyle(color: Colors.white),
                     ),
                   ),
                 ),
@@ -287,6 +247,7 @@ class _LoginScreen3State extends State<LoginScreen3>
           ),
           Divider(
             height: 24.0,
+            color: Colors.transparent,
           ),
           new Row(
             mainAxisAlignment: MainAxisAlignment.end,
@@ -298,8 +259,8 @@ class _LoginScreen3State extends State<LoginScreen3>
                     "¿Olvidaste tu clave?",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      color: Colors.redAccent,
-                      fontSize: 15.0,
+                      color: Colors.white,
+                      fontSize: 17.0,
                     ),
                     textAlign: TextAlign.end,
                   ),
@@ -319,7 +280,7 @@ class _LoginScreen3State extends State<LoginScreen3>
                     shape: new RoundedRectangleBorder(
                       borderRadius: new BorderRadius.circular(30.0),
                     ),
-                    color: Colors.redAccent,
+                    color: Colors.white,
                     onPressed: () {
                       Navigator.push(
                         context,
@@ -328,7 +289,7 @@ class _LoginScreen3State extends State<LoginScreen3>
                     },
                     child: new Container(
                       padding: const EdgeInsets.symmetric(
-                        vertical: 20.0,
+                        vertical: 15.0,
                         horizontal: 20.0,
                       ),
                       child: new Row(
@@ -339,7 +300,8 @@ class _LoginScreen3State extends State<LoginScreen3>
                               "Acceder",
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                  color: Colors.white,
+                                  fontSize: 22,
+                                  color: Color.fromRGBO(2, 189, 199, 1.0),
                                   fontWeight: FontWeight.bold),
                             ),
                           ),
@@ -360,24 +322,24 @@ class _LoginScreen3State extends State<LoginScreen3>
     return new Container(
       height: MediaQuery.of(context).size.height,
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Color.fromRGBO(255, 147, 73, 1.0),
         image: DecorationImage(
           colorFilter: new ColorFilter.mode(
-              Colors.black.withOpacity(0.05), BlendMode.dstATop),
+              Colors.transparent.withOpacity(0.07), BlendMode.dstATop),
           image: AssetImage('assets/logo_app.png'),
-          fit: BoxFit.cover,
+          fit: BoxFit.fill,
         ),
       ),
-      child: new Column(
+      child: new ListView(
         children: <Widget>[
           Container(
-            padding: EdgeInsets.all(50.0),
+            padding: EdgeInsets.only(top: 40.0, bottom: 17.0),
             child: Center(
-              child: Icon(
-                Icons.payment,
-                color: Colors.redAccent,
-                size: 50.0,
-              ),
+              child: Image(
+                image: AssetImage('assets/creditcardchipsilver.png'),
+                width: 150.0,
+                height: 150.0
+              )
             ),
           ),
           new Row(
@@ -386,11 +348,11 @@ class _LoginScreen3State extends State<LoginScreen3>
                 child: new Padding(
                   padding: const EdgeInsets.only(left: 40.0),
                   child: new Text(
-                    "Ingresa tu DNI:",
+                    "Ingrese su correo:",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      color: Colors.redAccent,
-                      fontSize: 15.0,
+                      color: Colors.white,
+                      fontSize: 19.0,
                     ),
                   ),
                 ),
@@ -404,7 +366,7 @@ class _LoginScreen3State extends State<LoginScreen3>
             decoration: BoxDecoration(
               border: Border(
                 bottom: BorderSide(
-                    color: Colors.redAccent,
+                    color: Colors.white,
                     width: 0.5,
                     style: BorderStyle.solid),
               ),
@@ -416,12 +378,14 @@ class _LoginScreen3State extends State<LoginScreen3>
               children: <Widget>[
                 new Expanded(
                   child: TextField(
+                    style: new TextStyle(color: Colors.white),
+                    cursorColor: Colors.white,
                     obscureText: true,
                     textAlign: TextAlign.left,
                     decoration: InputDecoration(
                       border: InputBorder.none,
                       hintText: '',
-                      hintStyle: TextStyle(color: Colors.grey),
+                      hintStyle: TextStyle(color: Colors.white),
                     ),
                   ),
                 ),
@@ -430,6 +394,7 @@ class _LoginScreen3State extends State<LoginScreen3>
           ),
           Divider(
             height: 24.0,
+            color: Colors.transparent,
           ),
           new Row(
             children: <Widget>[
@@ -437,11 +402,11 @@ class _LoginScreen3State extends State<LoginScreen3>
                 child: new Padding(
                   padding: const EdgeInsets.only(left: 40.0),
                   child: new Text(
-                    "Escribe tu Contraseña:",
+                    "Escriba su Contraseña:",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      color: Colors.redAccent,
-                      fontSize: 15.0,
+                      color: Colors.white,
+                      fontSize: 19.0,
                     ),
                   ),
                 ),
@@ -455,7 +420,7 @@ class _LoginScreen3State extends State<LoginScreen3>
             decoration: BoxDecoration(
               border: Border(
                 bottom: BorderSide(
-                    color: Colors.redAccent,
+                    color: Colors.white,
                     width: 0.5,
                     style: BorderStyle.solid),
               ),
@@ -467,12 +432,14 @@ class _LoginScreen3State extends State<LoginScreen3>
               children: <Widget>[
                 new Expanded(
                   child: TextField(
+                    style: new TextStyle(color: Colors.white),
+                    cursorColor: Colors.white,
                     obscureText: true,
                     textAlign: TextAlign.left,
                     decoration: InputDecoration(
                       border: InputBorder.none,
                       hintText: '',
-                      hintStyle: TextStyle(color: Colors.grey),
+                      hintStyle: TextStyle(color: Colors.white),
                     ),
                   ),
                 ),
@@ -481,6 +448,7 @@ class _LoginScreen3State extends State<LoginScreen3>
           ),
           Divider(
             height: 24.0,
+            color: Colors.transparent,
           ),
           new Row(
             children: <Widget>[
@@ -491,8 +459,8 @@ class _LoginScreen3State extends State<LoginScreen3>
                     "Confirme su Contraseña:",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      color: Colors.redAccent,
-                      fontSize: 15.0,
+                      color: Colors.white,
+                      fontSize: 19.0,
                     ),
                   ),
                 ),
@@ -506,7 +474,7 @@ class _LoginScreen3State extends State<LoginScreen3>
             decoration: BoxDecoration(
               border: Border(
                 bottom: BorderSide(
-                    color: Colors.redAccent,
+                    color: Colors.white,
                     width: 0.5,
                     style: BorderStyle.solid),
               ),
@@ -518,12 +486,14 @@ class _LoginScreen3State extends State<LoginScreen3>
               children: <Widget>[
                 new Expanded(
                   child: TextField(
+                    style: new TextStyle(color: Colors.white),
+                    cursorColor: Colors.white,
                     obscureText: true,
                     textAlign: TextAlign.left,
                     decoration: InputDecoration(
                       border: InputBorder.none,
                       hintText: '',
-                      hintStyle: TextStyle(color: Colors.grey),
+                      hintStyle: TextStyle(color: Colors.white),
                     ),
                   ),
                 ),
@@ -532,6 +502,7 @@ class _LoginScreen3State extends State<LoginScreen3>
           ),
           Divider(
             height: 10.0,
+            color: Colors.transparent,
           ),
           new Row(
             mainAxisAlignment: MainAxisAlignment.end,
@@ -543,7 +514,7 @@ class _LoginScreen3State extends State<LoginScreen3>
                     "¿Ya tienes una cuenta?",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      color: Colors.redAccent,
+                      color: Colors.white,
                       fontSize: 15.0,
                     ),
                     textAlign: TextAlign.end,
@@ -564,11 +535,11 @@ class _LoginScreen3State extends State<LoginScreen3>
                     shape: new RoundedRectangleBorder(
                       borderRadius: new BorderRadius.circular(30.0),
                     ),
-                    color: Colors.redAccent,
+                    color: Colors.white,
                     onPressed: () => {},
                     child: new Container(
                       padding: const EdgeInsets.symmetric(
-                        vertical: 20.0,
+                        vertical: 17.0,
                         horizontal: 20.0,
                       ),
                       child: new Row(
@@ -579,7 +550,8 @@ class _LoginScreen3State extends State<LoginScreen3>
                               "REGISTRARSE",
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                  color: Colors.white,
+                                fontSize: 19,
+                                  color: Color.fromRGBO(255, 147, 73, 1.0),
                                   fontWeight: FontWeight.bold),
                             ),
                           ),
@@ -597,7 +569,6 @@ class _LoginScreen3State extends State<LoginScreen3>
   }
 
   gotoLogin() {
-    //controller_0To1.forward(from: 0.0);
     _controller.animateToPage(
       0,
       duration: Duration(milliseconds: 800),
@@ -606,7 +577,6 @@ class _LoginScreen3State extends State<LoginScreen3>
   }
 
   gotoSignup() {
-    //controller_minus1To0.reverse(from: 0.0);
     _controller.animateToPage(
       2,
       duration: Duration(milliseconds: 800),
@@ -621,28 +591,6 @@ class _LoginScreen3State extends State<LoginScreen3>
   Widget build(BuildContext context) {
     return Container(
         height: MediaQuery.of(context).size.height,
-//      child: new GestureDetector(
-//        onHorizontalDragStart: _onHorizontalDragStart,
-//        onHorizontalDragUpdate: _onHorizontalDragUpdate,
-//        onHorizontalDragEnd: _onHorizontalDragEnd,
-//        behavior: HitTestBehavior.translucent,
-//        child: Stack(
-//          children: <Widget>[
-//            new FractionalTranslation(
-//              translation: Offset(-1 - (scrollPercent / (1 / numCards)), 0.0),
-//              child: SignupPage(),
-//            ),
-//            new FractionalTranslation(
-//              translation: Offset(0 - (scrollPercent / (1 / numCards)), 0.0),
-//              child: HomePage(),
-//            ),
-//            new FractionalTranslation(
-//              translation: Offset(1 - (scrollPercent / (1 / numCards)), 0.0),
-//              child: LoginPage(),
-//            ),
-//          ],
-//        ),
-//      ),
         child: PageView(
           controller: _controller,
           physics: new AlwaysScrollableScrollPhysics(),

@@ -139,7 +139,7 @@ class TarjetaPresentacionModel extends StatelessWidget {
               _cardLogo,
               _cardUsuario,
               _puesto,
-              _especialidad,
+              //_especialidad,
               _telefono,
               _correo,
               _direccion
