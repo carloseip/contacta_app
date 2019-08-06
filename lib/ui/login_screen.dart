@@ -1,6 +1,11 @@
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:qr_scanner_generator/models/Acceso.dart';
 import 'app.dart';
 import 'navigation.dart';
+import 'package:http/http.dart' as http;
 
 class LoginScreen3 extends StatefulWidget {
   @override
@@ -9,6 +14,45 @@ class LoginScreen3 extends StatefulWidget {
 
 class _LoginScreen3State extends State<LoginScreen3>
     with TickerProviderStateMixin {
+
+  TextEditingController controllerCorreo = new TextEditingController();
+  TextEditingController controllerContrasenia = new TextEditingController();
+
+  void addData(){
+    var url="https://contacta.azurewebsites.net/api/accesos";
+
+    final response = http.post(url, body: {
+        "correo": controllerCorreo.text,
+        "contrasenia": controllerContrasenia.text
+      });
+  }
+
+  Future<Acceso> createPost() async {
+  Map<String,String> headers = {
+    'Content-type' : 'application/json', 
+    'Accept': 'application/json',
+  };
+  return http.post('https://contacta.azurewebsites.net/api/accesos').then((http.Response response) {
+      final int statusCode = response.statusCode; 
+    if (statusCode < 200 || statusCode > 400 || json == null) {
+      throw new Exception("Error while fetching data");
+    }
+    return Acceso.fromJson(json.decode(response.body));
+  });
+}
+
+Future<Acceso> apiRequest(String url, Map jsonMap) async {
+  HttpClient httpClient = new HttpClient();
+  HttpClientRequest request = await httpClient.postUrl(Uri.parse(url));
+  request.headers.set('content-type', 'application/json');
+  request.add(utf8.encode(json.encode(jsonMap)));
+  HttpClientResponse response = await request.close();
+  // todo - you should check the response.statusCode
+  String reply = await response.transform(utf8.decoder).join();
+  httpClient.close();
+  return null;
+}
+
   @override
   void initState() {
     super.initState();
@@ -368,9 +412,9 @@ class _LoginScreen3State extends State<LoginScreen3>
               children: <Widget>[
                 new Expanded(
                   child: TextField(
+                    controller: controllerCorreo,
                     style: new TextStyle(color: Colors.white),
                     cursorColor: Colors.white,
-                    obscureText: true,
                     textAlign: TextAlign.left,
                     decoration: InputDecoration(
                       border: InputBorder.none,
@@ -472,6 +516,7 @@ class _LoginScreen3State extends State<LoginScreen3>
               children: <Widget>[
                 new Expanded(
                   child: TextField(
+                    controller: controllerContrasenia,
                     style: new TextStyle(color: Colors.white),
                     cursorColor: Colors.white,
                     obscureText: true,
@@ -522,11 +567,14 @@ class _LoginScreen3State extends State<LoginScreen3>
                       borderRadius: new BorderRadius.circular(30.0),
                     ),
                     color: Colors.white,
-                    onPressed: () => {
+                    onPressed: () async {
+                      Acceso newPost = new Acceso(
+                        correo: controllerCorreo.text, contrasenia: controllerContrasenia.text);
+                        Acceso p = await apiRequest('https://contacta.azurewebsites.net/api/accesos', newPost.toMap());
                       Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) => MyApp()),
-                      ),
+                      );
                     },
                     child: new Container(
                       padding: const EdgeInsets.symmetric(
