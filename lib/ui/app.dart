@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:qr_scanner_generator/ui/widgets/card_list.dart';
+
+import 'card_type.dart';
 //import '../ui/card_type.dart';
 
 class App extends StatelessWidget{
@@ -28,8 +30,27 @@ class App extends StatelessWidget{
         // ]
       ),
       body: CardList(),
+            floatingActionButton: FloatingActionButton(
+              backgroundColor: Colors.amberAccent,
+              onPressed: () {
+                Navigator.of(context).push(
+                  new MaterialPageRoute<void>(
+                    builder: (BuildContext context) {
+                      return new Scaffold(
+                        body: CardType(),
+                      );
+                    },
+                  ),
+                );
+              },
+              tooltip: 'Increment',
+              child: Icon(Icons.add),
+            ),
     );
     //return  CardList();
   }
   
+    void _metodo() {
+
+  }
 }

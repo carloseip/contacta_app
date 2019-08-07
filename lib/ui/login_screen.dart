@@ -50,6 +50,9 @@ Future<Acceso> apiRequest(String url, Map jsonMap) async {
   // todo - you should check the response.statusCode
   String reply = await response.transform(utf8.decoder).join();
   httpClient.close();
+
+  Acceso nuevo = Acceso.fromJson(json.decode(reply));
+
   return null;
 }
 
@@ -302,7 +305,12 @@ Future<Acceso> apiRequest(String url, Map jsonMap) async {
                     ),
                     textAlign: TextAlign.end,
                   ),
-                  onPressed: () => {},
+                  onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => MyApp()),
+                      );
+                  },
                 ),
               ),
             ],
@@ -571,6 +579,8 @@ Future<Acceso> apiRequest(String url, Map jsonMap) async {
                       Acceso newPost = new Acceso(
                         correo: controllerCorreo.text, contrasenia: controllerContrasenia.text);
                         Acceso p = await apiRequest('https://contacta.azurewebsites.net/api/accesos', newPost.toMap());
+                      
+                      print(p.correo);
                       Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) => MyApp()),
